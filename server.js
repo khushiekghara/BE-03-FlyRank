@@ -1,6 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
-import supabase from "./config/supabase.js";
+import authRoutes from "./routes/authRoutes.js";
 
 dotenv.config();
 
@@ -8,9 +8,11 @@ const app = express();
 
 app.use(express.json());
 
+app.use("/auth", authRoutes);
+
 app.get("/", (req, res) => {
   res.json({
-    message: "Server running and connected to Supabase"
+    message: "Server running and connected to Supabase",
   });
 });
 
